@@ -1,121 +1,171 @@
-'use client';
+import Image from "next/image";
 
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from '@/components/ui/button';
-import { motion } from 'framer-motion';
-import { GraduationCap, Users, BookOpen, Star } from 'lucide-react';
+export const metadata = {
+  title: "Programs | Taifa Letu Homeschool and Tuition",
+  description:
+    "Explore Taifa Letu Homeschool and Tuition programs — from Kindergarten to Senior High School, offering CBC, Cambridge, and IB curricula with flexible homeschooling and blended learning options.",
+};
 
 export default function ProgramsPage() {
-  const programs = [
-    {
-      title: 'Homeschool Program',
-      icon: <GraduationCap className="w-8 h-8 text-blue-500" />,
-      description:
-        'A flexible, curriculum-based learning program designed for personalized home education that meets CBC and international standards.',
-      link: '/programs/homeschool',
-    },
-    {
-      title: 'Tuition Support',
-      icon: <BookOpen className="w-8 h-8 text-blue-500" />,
-      description:
-        'Expert tutors providing targeted academic help for students in primary and secondary levels, both online and in-person.',
-      link: '/programs/tuition',
-    },
-    {
-      title: 'Special Needs Education',
-      icon: <Users className="w-8 h-8 text-blue-500" />,
-      description:
-        'Inclusive learning designed to support students with intellectual, emotional, and social development needs.',
-      link: '/programs/special-education',
-    },
-    {
-      title: 'Enrichment Classes',
-      icon: <Star className="w-8 h-8 text-blue-500" />,
-      description:
-        'Creative, skill-based learning sessions that nurture talents in art, coding, communication, and leadership.',
-      link: '/programs/enrichment',
-    },
-  ];
-
   return (
-    <main className="bg-linear-to-b from-gray-50 to-white text-gray-800">
-      {/* Hero Section */}
-      <section className="relative bg-linear-to-br from-gray-100 to-white overflow-hidden">
-        <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center px-6 sm:px-8 lg:px-12 py-16 lg:py-24 gap-10">
-          {/* Text Section */}
-          <div className="flex-1 text-center md:text-left">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-              Our <span className="text-blue-500">Programs</span>
-            </h1>
-            <p className="text-lg text-gray-600 mb-6">
-              At Taifa Letu Education, we offer programs that balance academic rigor with personal growth, designed to empower learners of all abilities.
-            </p>
-            <Button
-              size="lg"
-              className="bg-blue-500 hover:bg-blue-600 text-white rounded-full px-8 py-3"
-            >
-              Enroll Now
-            </Button>
-          </div>
-
-          {/* Hero Image */}
-          <div className="flex-1">
-            <Image
-              src="/about-image.png"
-              alt="Teacher guiding student in a homeschooling session"
-              width={600}
-              height={500}
-              className="w-full h-auto object-cover rounded-2xl shadow-lg"
-              priority
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Programs Grid */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
-            Explore Our <span className="text-blue-500">Learning Paths</span>
-          </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {programs.map((program, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ y: -5 }}
-                className="bg-gray-50 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 p-6 flex flex-col items-start"
-              >
-                <div className="mb-4">{program.icon}</div>
-                <h3 className="text-lg font-semibold mb-2">{program.title}</h3>
-                <p className="text-sm text-gray-600 mb-4">{program.description}</p>
-                <Link
-                  href={program.link}
-                  className="text-blue-500 text-sm font-medium hover:underline"
-                >
-                  Learn more →
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Call to Action */}
-      <section className="bg-blue-500 text-white py-16 text-center">
-        <div className="max-w-3xl mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
-            Ready to Begin Your Learning Journey?
-          </h2>
-          <p className="text-lg text-blue-100 mb-6">
-            Join Taifa Letu Education and experience personalized, value-driven education that empowers success.
+    <main className="bg-white text-gray-800">
+      {/* Header Section */}
+      <section className="relative py-20 bg-gradient-to-br from-gray-50 to-white text-center">
+        <div className="max-w-4xl mx-auto px-6">
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+            What We Offer
+          </h1>
+          <p className="text-lg text-gray-700 leading-relaxed">
+            Taifa Letu Homeschool and Tuition provides transformative
+            homeschooling programs designed for learners from Kindergarten
+            through Senior High School — blending personalized instruction with
+            world-class curricula including Kenya’s CBC, Cambridge, and IB
+            systems.
           </p>
-          <Button
-            size="lg"
-            className="bg-white text-blue-600 font-semibold hover:bg-blue-50 rounded-full"
-          >
-            Enroll Now
-          </Button>
+        </div>
+      </section>
+
+      {/* Program Cards */}
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 grid md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {/* Kindergarten */}
+          <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition">
+            <div className="relative h-56 w-full">
+              <Image
+                src="/program-kindergarten.jpg"
+                alt="Kindergarten students learning through play"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h2 className="text-xl font-semibold text-blue-600 mb-3">
+                Kindergarten
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                Early Learning Village serves children aged 4–8 in Nairobi,
+                Kenya, introducing foundational skills through play-based
+                learning. Learners are introduced to early literacy and
+                numeracy under the CBC and British Early Years Foundation
+                frameworks.
+              </p>
+            </div>
+          </div>
+
+          {/* Preparatory */}
+          <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition">
+            <div className="relative h-56 w-full">
+              <Image
+                src="/program-preparatory.jpg"
+                alt="Preparatory students engaged in homeschooling activity"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h2 className="text-xl font-semibold text-blue-600 mb-3">
+                Preparatory
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                Our Cambridge and CBC preparatory programs for ages 5–11 build a
+                solid academic base while nurturing curiosity, creativity, and
+                essential life skills. Students develop confidence and a love
+                for learning that prepares them for global education pathways.
+              </p>
+            </div>
+          </div>
+
+          {/* Junior High School */}
+          <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition">
+            <div className="relative h-56 w-full">
+              <Image
+                src="/program-junior.jpg"
+                alt="Junior high school students collaborating in class"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h2 className="text-xl font-semibold text-blue-600 mb-3">
+                Junior High School
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                The Junior High program builds on the CBC’s competency-based
+                structure while aligning with Cambridge Lower Secondary and IB
+                Middle Years frameworks. We equip learners with academic and
+                problem-solving skills to transition smoothly into Senior High
+                and beyond.
+              </p>
+            </div>
+          </div>
+
+          {/* Senior High School */}
+          <div className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-xl transition">
+            <div className="relative h-56 w-full">
+              <Image
+                src="/program-senior.jpg"
+                alt="Senior high school students preparing for exams"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6">
+              <h2 className="text-xl font-semibold text-blue-600 mb-3">
+                Senior High School
+              </h2>
+              <p className="text-gray-700 leading-relaxed">
+                Our Senior High program offers rigorous academic training and
+                exam preparation for IGCSE (Years 10–11), A Levels (Years
+                12–13), IB Diploma, and the CBC Senior School. Learners receive
+                personalized support in university guidance, career readiness,
+                and leadership development.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Curricula Overview */}
+      <section className="py-20 bg-blue-50">
+        <div className="max-w-5xl mx-auto px-6 text-center">
+          <h2 className="text-3xl font-bold text-blue-700 mb-6">
+            Supported Curricula
+          </h2>
+          <p className="text-gray-700 mb-10">
+            Taifa Letu Homeschool proudly offers flexible programs aligned with
+            global and national education systems.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                CBC (Kenya)
+              </h3>
+              <p className="text-gray-700">
+                Emphasizes creativity, practical learning, and holistic
+                development tailored to the Kenyan education framework.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                Cambridge International
+              </h3>
+              <p className="text-gray-700">
+                Provides globally recognized qualifications from Cambridge
+                Primary to A Levels, focusing on academic excellence and global
+                citizenship.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl shadow-md p-6 hover:shadow-xl transition">
+              <h3 className="text-xl font-semibold text-blue-600 mb-3">
+                International Baccalaureate (IB)
+              </h3>
+              <p className="text-gray-700">
+                Encourages inquiry-based, student-centered learning that builds
+                critical thinkers and compassionate world citizens.
+              </p>
+            </div>
+          </div>
         </div>
       </section>
     </main>

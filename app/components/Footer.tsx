@@ -22,111 +22,101 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-blue-400 text-gray-200">
-      {/* Top Footer */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {/* Column 1: About */}
-          <div>
-            <Image
-              src="/logo.png"
-              alt="Taifa Letu Education"
-              width={160}
-              height={60}
-              className="mb-4 rounded-full bg-white p-2"
+    <footer className="bg-blue-950 text-gray-200 py-12 mt-10">
+      {/* Top Section */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10">
+        
+        {/* Column 1: About */}
+        <div>
+          <h3 className="text-2xl font-bold text-white mb-4">Taifa Letu Education</h3>
+          <p className="text-gray-300 leading-relaxed mb-5">
+            Empowering young minds through holistic learning — blending Cambridge
+            and CBC curriculums to prepare students for a bright, innovative future.
+          </p>
+          <div className="flex space-x-5 text-2xl">
+            <Link href="https://facebook.com" className="hover:text-yellow-400 transition">
+              <FontAwesomeIcon icon={faFacebookF} />
+            </Link>
+            <Link href="https://twitter.com" className="hover:text-yellow-400 transition">
+              <FontAwesomeIcon icon={faTwitter} />
+            </Link>
+            <Link href="https://instagram.com" className="hover:text-yellow-400 transition">
+              <FontAwesomeIcon icon={faInstagram} />
+            </Link>
+            <Link href="https://linkedin.com" className="hover:text-yellow-400 transition">
+              <FontAwesomeIcon icon={faLinkedinIn} />
+            </Link>
+          </div>
+        </div>
+
+        {/* Column 2: Quick Links */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-white">Quick Links</h4>
+          <ul className="space-y-3">
+            <li><Link href="/" className="hover:text-yellow-400 transition">Home</Link></li>
+            <li><Link href="/about" className="hover:text-yellow-400 transition">About Us</Link></li>
+            <li><Link href="/programs" className="hover:text-yellow-400 transition">Programs</Link></li>
+            <li><Link href="/contact" className="hover:text-yellow-400 transition">Contact</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 3: Programs */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-white">Programs</h4>
+          <ul className="space-y-3">
+            <li><Link href="/kindergarten" className="hover:text-yellow-400 transition">Kindergarten</Link></li>
+            <li><Link href="/primary" className="hover:text-yellow-400 transition">Primary</Link></li>
+            <li><Link href="/secondary" className="hover:text-yellow-400 transition">Secondary</Link></li>
+            <li><Link href="/homeschooling" className="hover:text-yellow-400 transition">Homeschooling</Link></li>
+          </ul>
+        </div>
+
+        {/* Column 4: Contact + Newsletter */}
+        <div>
+          <h4 className="text-lg font-semibold mb-4 text-white">Contact Us</h4>
+          <ul className="space-y-4 mb-6">
+            <li className="flex items-start gap-3">
+              <FontAwesomeIcon icon={faMapMarkerAlt} className="text-yellow-400 mt-1" />
+              <span>Nairobi, Kenya<br />Westlands Area</span>
+            </li>
+            <li className="flex items-center gap-3">
+              <FontAwesomeIcon icon={faPhone} className="text-yellow-400" />
+              <a href="tel:+254740129444" className="hover:text-yellow-400 transition">+254 740 129 444</a>
+            </li>
+            <li className="flex items-center gap-3">
+              <FontAwesomeIcon icon={faEnvelope} className="text-yellow-400" />
+              <a href="mailto:info@taifaletu.ac.ke" className="hover:text-yellow-400 transition">
+                info@taifaletu.ac.ke
+              </a>
+            </li>
+          </ul>
+
+          {/* Newsletter Subscription */}
+          <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-2">
+            <input
+              type="email"
+              placeholder="Your email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="flex-1 px-4 py-2 rounded-md bg-blue-900 border border-blue-800 text-sm placeholder-gray-400 focus:outline-none focus:border-yellow-400"
             />
-            <p className="text-sm leading-relaxed mb-5">
-              Taifa Letu Education provides research-based, personalized tutoring services both in-person and virtually — nurturing academic excellence and confidence for life.
-            </p>
-            <div className="flex space-x-4">
-              <Link href="#" aria-label="Facebook" className="hover:text-blue-300 transition-colors">
-                <FontAwesomeIcon icon={faFacebookF} />
-              </Link>
-              <Link href="#" aria-label="Twitter" className="hover:text-blue-300 transition-colors">
-                <FontAwesomeIcon icon={faTwitter} />
-              </Link>
-              <Link href="#" aria-label="Instagram" className="hover:text-blue-300 transition-colors">
-                <FontAwesomeIcon icon={faInstagram} />
-              </Link>
-              <Link href="#" aria-label="LinkedIn" className="hover:text-blue-300 transition-colors">
-                <FontAwesomeIcon icon={faLinkedinIn} />
-              </Link>
-            </div>
-          </div>
-
-          {/* Column 2: Quick Links */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Quick Links</h3>
-            <ul className="space-y-3">
-              <li><Link href="/" className="hover:text-blue-300 text-sm transition-colors">Home</Link></li>
-              <li><Link href="/approach" className="hover:text-blue-300 text-sm transition-colors">Our Approach</Link></li>
-              <li><Link href="/parents" className="hover:text-blue-300 text-sm transition-colors">For Parents</Link></li>
-              <li><Link href="/special-education" className="hover:text-blue-300 text-sm transition-colors">Special Education</Link></li>
-              <li><Link href="/contact" className="hover:text-blue-300 text-sm transition-colors">Contact Us</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 3: Programs */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Programs</h3>
-            <ul className="space-y-3">
-              <li><Link href="/curriculum" className="hover:text-blue-300 text-sm transition-colors">Curriculum</Link></li>
-              <li><Link href="/values" className="hover:text-blue-300 text-sm transition-colors">Efficacy & Values</Link></li>
-              <li><Link href="/social-learning" className="hover:text-blue-300 text-sm transition-colors">Social & Emotional Learning</Link></li>
-              <li><Link href="/intellectual" className="hover:text-blue-300 text-sm transition-colors">Intellectual Disabilities</Link></li>
-            </ul>
-          </div>
-
-          {/* Column 4: Contact */}
-          <div>
-            <h3 className="text-white font-semibold text-lg mb-4">Contact Us</h3>
-            <ul className="space-y-4">
-              <li className="flex items-start space-x-3">
-                <FontAwesomeIcon icon={faMapMarkerAlt} className="text-blue-300 mt-1" />
-                <span className="text-sm">Nairobi, Kenya<br />Westlands Area</span>
-              </li>
-              <li className="flex items-center space-x-3">
-                <FontAwesomeIcon icon={faPhone} className="text-blue-300" />
-                <a href="tel:+254700000000" className="text-sm hover:text-blue-300 transition-colors">+254 740129444</a>
-              </li>
-              <li className="flex items-center space-x-3">
-                <FontAwesomeIcon icon={faEnvelope} className="text-blue-300" />
-                <a href="mailto:info@taifaletukenya.com" className="text-sm hover:text-blue-300 transition-colors">info@taifaletukenya.com</a>
-              </li>
-            </ul>
-
-            {/* Newsletter */}
-            <form onSubmit={handleSubscribe} className="mt-6 flex flex-col sm:flex-row gap-2">
-              <input
-                type="email"
-                placeholder="Your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="flex-1 px-4 py-2 rounded-md bg-blue-600 border border-blue-700 text-sm placeholder-gray-300 focus:outline-none focus:border-blue-400"
-              />
-              <button
-                type="submit"
-                className="px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-md text-sm font-medium transition-all"
-              >
-                Subscribe
-              </button>
-            </form>
-          </div>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-blue-950 font-semibold rounded-md text-sm transition"
+            >
+              Subscribe
+            </button>
+          </form>
         </div>
       </div>
 
-      {/* Mobile Layout Divider */}
-      <div className="md:hidden border-t border-blue-400 my-4"></div>
-
-      {/* Bottom Bar */}
-      <div className="border-t border-blue-500 bg-blue-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col md:flex-row items-center justify-between text-sm text-gray-400 space-y-3 md:space-y-0">
-          <p>© {new Date().getFullYear()} Taifa Letu Education. All Rights Reserved.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link href="/privacy-policy" className="hover:text-blue-300">Privacy Policy</Link>
-            <Link href="/terms" className="hover:text-blue-300">Terms of Service</Link>
-            <Link href="/cookies" className="hover:text-blue-300">Cookies</Link>
-          </div>
+      {/* Bottom Line */}
+      <div className="border-t border-gray-700 mt-10 pt-6 text-center text-gray-400 text-sm">
+        <p>© {new Date().getFullYear()} Taifa Letu Education. All rights reserved.</p>
+        <div className="flex justify-center space-x-4 mt-3">
+          <Link href="/privacy-policy" className="hover:text-yellow-400 transition">Privacy Policy</Link>
+          <Link href="/terms" className="hover:text-yellow-400 transition">Terms of Service</Link>
+          <Link href="/cookies" className="hover:text-yellow-400 transition">Cookies</Link>
         </div>
       </div>
     </footer>

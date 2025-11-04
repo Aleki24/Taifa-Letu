@@ -1,11 +1,11 @@
 import React from "react";
 
-
 import Image from "next/image";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { GraduationCap, Globe, Sparkles } from "lucide-react";
 import HeroSection from "../homeHero/page";
+import WhyChooseHomeschooling from "../components/WhyChooseHomeschooling";
 
 export default function HomePage() {
   return (
@@ -36,15 +36,18 @@ export default function HomePage() {
               Whether online or in-person, we deliver personalized learning
               experiences that meet each learner’s pace and style.
             </p>
-            <Button
-              size="lg"
-              className="bg-blue-400 hover:bg-blue-500 text-white rounded-full px-8 py-6"
-            >
-              Learn More About Us
-            </Button>
+            <Link href="/about" passHref>
+              <Button
+                size="lg"
+                className="bg-blue-400 hover:bg-blue-500 text-white rounded-full px-8 py-6"
+              >
+                Learn More About Us
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
+      <WhyChooseHomeschooling />
 
       {/* PROGRAMS SECTION */}
       <section className="py-20 bg-gray-50">
