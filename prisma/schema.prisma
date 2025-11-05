@@ -1,9 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client"
   output   = "../lib/generated/prisma"
@@ -14,11 +8,69 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  name      String?
+  role      UserRole @default(USER)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  resources Resource[] // 👈 renamed, lowercase plural
+}
+
+enum UserRole {
+  ADMIN
+  USER
+}
+
+model Curriculum {
+  id        String     @id @default(cuid())
+  name      String     @unique
+  grades    Grade[]
+  resources Resource[] // 👈 correct
+  createdAt DateTime   @default(now())
+}
+
+model Grade {
+  id           String     @id @default(cuid())
+  name         String
+  curriculum   Curriculum @relation(fields: [curriculumId], references: [id])
+  curriculumId String
+  subjects     Subject[]
+  resources    Resource[] // 👈 renamed, lowercase plural
+  createdAt    DateTime   @default(now())
+
+  @@unique([name, curriculumId])
+}
+
+model Subject {
+  id        String     @id @default(cuid())
+  name      String
+  grade     Grade      @relation(fields: [gradeId], references: [id])
+  gradeId   String
+  resources Resource[]
+  createdAt DateTime   @default(now())
+
+  @@unique([name, gradeId])
+}
+
 model Resource {
-  id          Int      @id @default(autoincrement())
-  title       String
-  description String?
-  fileUrl     String
-  category    String   // "pdf", "video", "link"
-  createdAt   DateTime @default(now())
+  id           String     @id @default(cuid())
+  title        String
+  description  String?
+  fileName     String
+  s3Key        String
+  mimeType     String
+  size         Int
+  curriculum   Curriculum @relation(fields: [curriculumId], references: [id])
+  curriculumId String
+  grade        Grade      @relation(fields: [gradeId], references: [id])
+  gradeId      String
+  subject      Subject    @relation(fields: [subjectId], references: [id])
+  subjectId    String
+  uploadedBy   User?      @relation(fields: [uploadedById], references: [id])
+  uploadedById String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
 }
